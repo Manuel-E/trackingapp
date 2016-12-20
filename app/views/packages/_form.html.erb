@@ -1,42 +1,47 @@
 <%= form_for @package do |f| %>
+
+  <% if !@package.tracking_id.blank? %>
+    <%= f.label :tracking_id, 'Tracking Id' %>:
+    <%= @package.tracking_id %><br />
+  <% end %>
+  
   <%= f.label :content, 'Content' %>:
-  <%= f.text_field :content %><br />
+  <%= f.text_field :content ,required: true%><br />
   <%= f.label :weight, 'Weight' %>:
-  <%= f.text_field :weight %><br />
+  <%= f.text_field :weight,required: true %><br />
   <%= f.label :state, 'State' %>:
   <%= f.select :state_id, State.all.collect { |s| [ s.name, s.id ] }, include_blank: false %><br />
   <%= f.label :truck, 'Truck' %>:
 
   <%= f.select :truck_id, Truck.all.collect { |t| [ t.name, t.id ] }, include_blank: false %><br />
-
+  <br/>
   <%= f.label  'Current Position' %>:
    
   <fieldset class="gllpLatlonPicker">
-    <br/><br/>
+    
     <div class="gllpMap">Google Maps</div>
     <br/>
 
     <%= f.fields_for :current_location do |s| %>
       <label>Latitud</label>
-      <%= s.text_field :latitude,class:"gllpLatitude" %><br />
+      <%= s.text_field :latitude,class:"gllpLatitude",required: true %><br />
       <label>Longitud</label>
-      <%= s.text_field :longitude,class:"gllpLongitude" %><br />
+      <%= s.text_field :longitude,class:"gllpLongitude",required: true %><br />
     <% end %>
 
 
-    <input type="button" class="gllpUpdateButton" value="update map">
     <br/>
   </fieldset>
 
     <%= f.fields_for :origin do |s| %>
       <h1>Origin</h1>
       <label>address</label>
-      <%= s.text_field :address %><br />
+      <%= s.text_field :address ,required: true%><br />
     <% end %>
     <%= f.fields_for :destination do |s| %>
       <h1>Destination</h1>
       <label>address</label>
-      <%= s.text_field :address %><br />
+      <%= s.text_field :address ,required: true%><br />
     <% end %>
 
 

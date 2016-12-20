@@ -31,6 +31,7 @@ class TrucksController < ApplicationController
   end
 
   def show
+    @packages=@truck.packages
   end
 
   def update

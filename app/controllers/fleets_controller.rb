@@ -31,6 +31,7 @@ class FleetsController < ApplicationController
   end
 
   def show
+    @trucks=@fleet.trucks
   end
 
   def update

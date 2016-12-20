@@ -22,6 +22,9 @@ class Package < ActiveRecord::Base
   validates :destination, presence: true
   validates :state, presence: true
   validates :truck, presence: true
+  validates :content, presence: true
+  validates :weight, numericality: true
+
 
 
  def cancelable?

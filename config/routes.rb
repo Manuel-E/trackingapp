@@ -55,9 +55,11 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
 
+  devise_for :users
+
   resources :fleets
   
-  resources :packages do
+  resources :packages ,:except => [:show] do
     collection do
       get "get_package_by_tracking_id"
       post "cancel_package"
@@ -66,16 +68,12 @@ Rails.application.routes.draw do
 
   resources :trucks
 
-  root 'welcome#index'
-
-  devise_for :users
-
-
   namespace :api do
     namespace :v1 do
       get 'getPackageByTrackingID' => 'packages#get_package_by_tracking_id'
     end
   end
 
+  root 'welcome#index'
 
 end

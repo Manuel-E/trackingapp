@@ -1,6 +1,6 @@
 class PackagesController < ApplicationController
   authorize_resource 
-  before_filter :load_package, only: [:edit, :show, :update]
+  before_filter :load_package, only: [:edit, :show, :update,:destroy]
   
   def cancel_package
     @package=Package.state("En Bodega").find_by_tracking_id(params[:tracking_id])
@@ -24,6 +24,15 @@ class PackagesController < ApplicationController
     end
   end
 
+  def destroy
+    if @package.destroy
+      flash[:success] = "Package deleted"
+    else
+      flash[:error] = "The Package Could not be deleted"
+    end
+    redirect_to packages_path
+  end  
+
   def get_package_by_tracking_id
     @package=Package.no_state("Entregado").find_by_tracking_id(params[:tracking_id])
   end
@@ -43,16 +52,15 @@ class PackagesController < ApplicationController
   	@package.destination=Location.new
   end
 
-  def show
-  end
 
   def update
     if @package.update(package_params)
       flash[:success] = "Package updated"
-      redirect_to edit_package_path(@package)
     else
       flash[:error] = "The Package Could not be updated"
     end
+      redirect_to edit_package_path(@package)
+
   end
 
   private

@@ -34,6 +34,7 @@ class Ability
          can :manage, :all
        else
          can :get_package_by_tracking_id, Package
+         can :cancel_package, Package
        end
 
   end
