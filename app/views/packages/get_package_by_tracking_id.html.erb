@@ -1,0 +1,10 @@
+<%if !@package.blank? %>
+<b>Tracking Id:</b><%= @package.tracking_id%><br/>
+<b>Status:</b><%= @package.state.name%><br/>
+<br/>
+<%if @package.cancelable?%>
+  <%= link_to('Cancel', cancel_package_packages_path(tracking_id:@package.tracking_id),method: :post)  %>  
+<%end%>
+<%else%>
+<h1>Package not found<h1>
+<%end%>

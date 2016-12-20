@@ -1,0 +1,32 @@
+<h1>Fleets</h1>
+<%= link_to('New Fleet', new_fleet_path)  %>  <br/>
+<div class="row">
+	<div class="col-md-3">
+		<b>Name </b>
+	</div>
+	<div class="col-md-3"> 
+		<b>City</b>
+	</div>
+	<div class="col-md-3"> 
+		<b></b>
+	</div>
+	<div class="col-md-3"> 
+		<b></b>		
+	</div>
+</div>
+<% @fleets.each do |fleet|%>
+	<div class="col-md-3">
+		<%= fleet.name%>
+	</div>
+	<div class="col-md-3"> 
+		<%= fleet.city.name%>
+	</div>
+	<div class="col-md-3"> 
+		<%=link_to('Edit',edit_fleet_path(fleet))%>
+	</div>
+	<div class="col-md-3">
+		<%= link_to 'Destroy',  fleet,  method: :delete, data: { confirm: 'Are you sure?' } %>
+	</div>
+
+	<br>
+<%end%>

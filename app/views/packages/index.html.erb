@@ -1,0 +1,43 @@
+<h1>Packages#index</h1>
+<p>Find me in app/views/packages/index.html.erb</p>
+
+<%= form_tag(packages_path, :method=>'get') do %>
+<%= select_tag 'state_name',options_for_select( State.all.collect { |s| [ s.name, s.name ] }) %>
+<%= submit_tag 'Filter' %><br/>
+<%end%>
+
+<%= link_to('New Package', new_package_path)  %>  <br/>
+
+<div class="row">
+	<div class="col-md-3">
+		<b>Tracking Id </b>
+	</div>
+	<div class="col-md-3"> 
+		<b>State</b>
+	</div>
+	<div class="col-md-3"> 
+		<b>Created At</b>
+	</div>
+	<div class="col-md-3"> 
+		
+	</div>
+</div>
+<% @packages.each do |package|%>
+<div class="row">
+	<div class="col-md-3">
+		<%= package.tracking_id%>
+	</div>
+	<div class="col-md-3"> 
+		<%= package.state.name%>
+	</div>
+	<div class="col-md-3"> 
+		<%= package.state.created_at%>
+	</div>
+	<div class="col-md-3"> 
+		<%=link_to('Edit',edit_package_path(package))%>
+	</div>
+</div>
+
+	<br>
+<%end%>
+

@@ -1,0 +1,20 @@
+<div class="row">
+	<div class="col-md-6">
+  		<%= link_to('Home', root_path) %>
+  	</div> 
+
+<%if !current_user.blank?%>
+	<div class="col-md-3">
+  		<%= current_user.email%>
+	</div>
+	<div class="col-md-3">
+  		<%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+  	</div> 
+
+<%else%>
+	<div class="col-md-6">
+  		<%= link_to('Login', new_user_session_path)  %> 
+  	</div> 
+<% end %>
+</div>
+<br/><br/>

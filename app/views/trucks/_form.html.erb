@@ -1,0 +1,11 @@
+<%= form_for @truck do |f| %>
+  <%= f.label :name, '' %>:
+  <%= f.text_field :name %><br />
+  <%= f.label :fleet, 'Fleet' %>:
+  <%= f.select :fleet_id, Fleet.all.collect { |f| [ f.name, f.id ] }, include_blank: false %><br />
+
+
+   
+
+  <%= f.submit %>
+<% end %>

@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  trackingid: MyString
+  weight: 1.5
+  content: MyString
+  state_id: 
+  origin: 
+  destination: 
+  current_location: 
+
+two:
+  trackingid: MyString
+  weight: 1.5
+  content: MyString
+  state_id: 
+  origin: 
+  destination: 
+  current_location: 

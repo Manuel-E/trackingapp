@@ -1,0 +1,21 @@
+<h1>Welcome</h1>
+
+
+<% if can? :manage, Fleet %>
+  <%= link_to "Fleets", fleets_path %><br/>
+<% end %>
+
+<% if can? :manage, Package %>
+  <%= link_to "Packages", packages_path %><br/>
+<% end %>
+
+<% if can? :manage, Truck %>
+  <%= link_to "Truck", trucks_path %><br/>
+<% end %>
+
+
+<h2>Tracking your Package</h2>
+<%= form_tag(get_package_by_tracking_id_packages_path, :method=>'get') do %>
+<%= text_field_tag 'tracking_id' %>
+<%= submit_tag 'search' %>
+<%end%>
